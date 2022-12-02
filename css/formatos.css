@@ -1,0 +1,566 @@
+/*    Nombre:            Eduardo Cárdaba Santos
+      Fecha:             2022/12/02
+      Módulo:            LMSGI
+      Unidad didáctica:  UD02
+      Tarea:             Tarea Evaluativa 02
+*/
+
+/* ************************************************** */
+/* ************************************************** */
+/* ************************************************** */
+
+@import "reset.css";
+
+/* ===================================== */
+/* ===== Estilos elementos comunes ===== */
+/* ===================================== */
+
+/* ----- Elemento principal de la web ----- */
+html {
+	height: 100%;
+	font-size: min(3vw,max(16px, 1vw));
+}
+
+/* ----- Cuerpo de cada página web ----- */
+body {
+	background-color: LightGreen;
+	color: Black;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	font-size: 1rem;
+	font-family: Helvetica;
+}
+
+/* ----- Títulos de nivel 1 ----- */
+h1 {
+	font-size: 1.5rem;         
+	font-weight: bold;         
+	text-align: center;        
+	text-decoration: underline;
+	margin-left: auto;         
+    margin-right: auto;        
+    padding-top: 2vh;          
+	padding-bottom: 3vh;       
+}
+
+/* ----- Títulos de nivel 3 ----- */
+h3 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: underline;
+}
+
+/* ----- Enlaces, hipervínculos ----- */
+a {
+    color: Black;
+	text-decoration: none;
+	text-align: center;
+}
+
+/* ----- Tablas ----- */
+table {
+	max-width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ----- Listas ordenadas ----- */
+ol {
+	list-style-type: none;
+}
+
+
+/* ===================================== */
+/* ===== Estilos secciones comunes ===== */
+/* ===================================== */
+
+/* ***** Encabezado ***** */
+	header {
+		position: static;
+		margin-top: 2em;
+		margin-bottom: 3vh;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 80%;
+	}
+	
+	/* ----- Imagen en el encabezado ----- */
+	header img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+/* ***** Pie de página ***** */
+	footer {
+		margin-top: auto;
+	}
+	
+	/* ----- Enlaces en el pie de página ----- */
+	footer a {
+		color: Black;
+		text-decoration: underline;
+	}
+
+/* ----- Clase "rrss" ----- */
+	.rrss {
+		display: flex;
+		justify-content: center;
+		list-style-type: none;
+		width: 40%;
+		padding: 0;
+		align-items: center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5vw;
+	}
+	
+	/* ----- Elementos de lista dentro de la clase "rrss" ----- */
+	.rrss li {
+		width: 50px;
+		text-align: center;
+		padding-left: 1vw;
+		padding-right: 1vw;
+	}
+	
+	/* ----- Imágenes dentro de la clase "rrss" ----- */
+	.rrss img {
+		max-width: 100%;
+		margin: auto;
+		padding: 0;
+	}
+
+/* ----- Clase "autoria" (define el formato del bloque inferior de cada página web, donde se muestra la información sobre el autor, disclaimer y licncias y/o recursos utilizados) ----- */
+	.autoria {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		list-style-type: none;
+		padding: 2vw;
+	}
+	
+	/* ----- Elementos de lista dentro de la clase "autoria" ----- */
+	.autoria li {
+		height: 1em;
+		font-size: 0.8rem;
+	}
+
+/* ***** Panel de navegación ("nav") ***** */
+	/* ----- Lista no numerada dentro del panel de navegación (muestra la lista de páginas web disponibles)----- */
+	nav ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		list-style-type: none;
+		width: 60%;
+		padding: 0;
+		align-items: center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 1em;
+		column-gap: 2vw;
+		row-gap: 2vh;
+		margin-bottom: 2vh;
+	}
+	
+	/* ----- Elementos de lista dentro del panel de navegación (define el formato de cada enlace a cada página web)----- */
+	nav li {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-width: 5rem;
+		padding: 1em;
+		height: 3vh;
+		position: relative;
+		background-color: DarkGreen;
+		border-radius: 1rem;
+	}
+	
+	/* ----- Hipervínculos dentro del panel de navegación ----- */
+	nav a {
+		color: white;
+	}
+	
+	/* ----- Clase "enlaces" (define el formato de la lista de páginas disponibles dentro de la página "Reviews") ----- */
+	.enlaces {
+		display: none;
+		position: absolute;
+		padding: 0;
+		width: 150%;
+		box-shadow: 0vw 1vw 5vw 1vw rgba(0,0,0,1);
+		z-index: 1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, 10%); 
+		text-align: center;
+	}
+	
+	/* ----- Elementos de lista dentro de la clase "enlaces" (elemento individual del submenú del enlace "Reviews")----- */
+	.enlaces li {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		color: white;
+		width: 100%;
+		padding: 0;
+		border-radius: 0;
+		height: 5vh;
+	}
+	
+	/* ----- Clase "actual" (utilizada para indicar en el panel de navegación en qué página estamos) ----- */
+	.actual {
+		box-shadow: 0vw 0vw 10px 5px rgba(0,0,0,1);
+	}
+	
+	/* ----- Hover de los elementos de lista que están contenidos en "nav" (el cuadro cambia a rojo cuando se pasa el cursor por encima del elemento) ----- */
+	nav li:hover {
+		background-color: Red;
+		border-radius: 0;
+	}
+	
+	/* ----- Hover (muestra la clase "enlaces" cuando el ratón pasa por encima de la clase "navegacion") ----- */ 
+	.navegacion:hover .enlaces {
+		display: block;
+		border-radius: 0;
+	}
+
+
+/* ======================================= */
+/* ===== Estilos página "index.html" ===== */
+/* ======================================= */
+
+	/* ----- Clase "bienvenida" (define el formato del bloque donde se muestran la foto y texto introductorio) ----- */
+	.bienvenida {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 50px;
+		width: 80%;
+	}
+	
+	/* ----- Clase "intro" (define el formato de la imagen principal dentro de "index") -----*/
+	.intro {
+		display: block;
+		float: left;
+		width: min(200px,30vw);
+		margin: auto;
+		padding: 1vw;
+	}
+	
+	/* ----- Clase "introduccion" (define el formato del texto principal dentro de "index") -----*/
+	.introduccion {
+		text-align: justify;
+		margin-bottom: 0.5rem;
+	}
+
+
+/* =========================================== */
+/* ===== Estilos página "reviews.html" ===== */
+/* =========================================== */
+
+	/* ----- Clase "reviews" (define el formato del grupo de reviews disponibles) -----*/
+	.reviews {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		max-width: 80%;
+		padding: 0;
+		list-style-type: none;
+		margin: auto;
+		margin-bottom: 50px;
+		row-gap: 2vh;
+		column-gap: 2vw;
+	}
+	
+	/* ----- Clase "unidad" (define el formato cada elemento del grupo de reviews disponibles) -----*/
+	.unidad {
+		min-width: 10vw;
+		min-height: 10vh;
+		position: relative;
+		text-align: center;
+		color: white;
+	}
+	
+	/* ----- Clase "previsualizacion" (define el formato de la imagen de cada review) -----*/
+	.previsualizacion {
+		max-width: 100%;
+		width: 300px;
+	}
+	
+	/* ----- Clase "flotante" (define el formato del rectángulo que aparece al pasar el ratón por encima de cada review en la página "Reviews") --- */
+	.flotante {
+		transition: 0.5s;
+		opacity: 0;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	
+	/* ----- Hover de los elementos de review (al pasar el ratón por encima de la imagen, se modifica su transparencia) ----- */
+	.unidad:hover .previsualizacion {
+		opacity: 0.3;
+	}
+	
+	/* ----- Hover de los elementos de review (al pasar el ratón por encima de la imagen, se muestra un rectángulo con el nombre del elemento) ----- */
+	.unidad:hover .flotante {
+		opacity: 1;
+	}
+	
+	/* ----- Clase "nombre" (define el formato del nombre de cada elemento de review) -----*/
+	.nombre {
+		padding: 2vw;
+		color: white;
+		background-color: #3A3A3A;
+		border-radius: 1vw;
+	}
+
+
+/* ================================================ */
+/* ===== Estilos páginas reviews individuales ===== */
+/* ================================================ */
+
+	/* ----- Clase "ficha" (define el formato de cada elemento td contenido en ella) -----*/
+	.ficha td {
+		vertical-align: middle;
+	}
+	
+	/* ----- Clase "detalle" (define el formato del elemento contenedor de la imagen del elemento revisado) -----*/
+	.detalle {
+		width: 40%;
+		height: 20vh;
+		padding-right: 2vw;
+		text-align: center;
+	}
+	
+	/* ----- Imágenes dentro de la clase "detalle" (define el formato de la imagen del elemento revisado) -----*/
+	.detalle img {
+		max-width: 100%;
+		max-height: 100%;
+		padding: 1rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	/* ----- Lista no numerada dentro de la clase "datos" (define el formato del grupo de datos de cada juego) -----*/
+	.datos ul {
+		display: flex;
+		flex-direction: column;
+		list-style-type: disc;
+		width: 100%;
+		padding-left: 1rem;
+	}
+	
+	/* ----- Elemento de lista dentro de la clase "datos" (define el formato de cada dato del juego) -----*/
+	.datos li {
+		width: 80%;
+		text-align: left;
+		padding: 1vw;
+	}
+	
+	/* ----- Clase "descripcion" (define el formato del texto principal dentro de cada review) ----- */
+	.descripcion {
+		text-align: justify;
+	}
+	
+	/* ----- Clase "review" (define el formato del texto "Review:") ----- */
+	.review {
+		font-weight: bold;
+		text-decoration: underline;
+		padding-bottom: 0.5em;
+	}
+	
+
+/* ========================================== */
+/* ===== Estilos página "noticias.html" ===== */
+/* ========================================== */
+
+	/* ----- Clase "article" (define el formato de cada noticia dentro de la página "Noticias") ----- */
+	article {
+		max-width: 60vw;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		border: 1px solid;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 2rem;
+		background-color: white;
+		padding: 5vw;
+		border-radius: 8vw;
+	}
+	
+	/* ----- Imagen dentro de la clase "article" (define el formato de la imagen de cada noticia) ----- */
+	article img {
+		max-width: 40vw;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 3vw;
+	}
+	
+	/* ----- Título h4 dentro de la clase "article" (define el formato del título de cada noticia) ----- */
+	article h4 {
+		text-align: center;
+		padding: 0;
+		margin: 1rem;
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	
+	/* ----- Párrafo dentro de la clase "article" (define el formato del texto introductorio de cada noticia) ----- */
+	article p {
+		text-align: justify;
+		margin: 1rem;
+		padding: 0;
+	}
+	
+	/* ----- Hpervínculo dentro de la clase "article" (define el formato del hipervínculo a la fuente de cada noticia) ----- */
+	article a {
+		text-decoration: underline;
+	}
+
+
+/* ========================================== */
+/* ===== Estilos página "contacto.html" ===== */
+/* ========================================== */
+
+	/* ----- Elemento "Form" (define el formato del elemento contenedor del formulario) ----- */
+	form {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 50px;
+	}
+	
+	/* ----- Elemento tabla dentro de "Form" (define el formato de la tabla donde irán los diferentes elementos del formulario) ----- */
+	form table {
+		width: 70%;
+		max-width: 750px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	/* ----- Elemento td dentro de "Form" (define el formato de cada celda de la tabla) ----- */
+	form td {
+		border: none;
+	}
+	
+	/* ----- Elementos del formulario (define el formato de los diferentes elementos del formulario) ----- */
+	input, select, textarea {
+		padding: 0;
+		width: 100%;
+		font-family: Helvetica;
+		font-size: 1rem;
+	}
+	
+	/* ----- Clase "boton" (define el formato del botón de "Enviar") ----- */
+	.boton {
+		width: 50%;
+		margin-left: 1vw;
+		height: 30px;
+		font-weight: bold;
+	}
+	
+	/* ----- Clase "apartadoFormulario" (define el formato de los textos de los apartados del formulario) ----- */
+	.apartadoFormulario {
+		text-align: right; 
+		padding-right: 1vw;
+	
+	}
+	
+	/* ----- Clase "campoFormulario" (define el formato de los campos del formulario (los cuadros de selección e inserción de texto)) ----- */
+	.campoFormulario {
+		width: 70%;
+		padding-left: 1vw;
+		height: 3rem;
+	}
+
+
+/* ========================================= */
+/* ===== Estilos página "enviado.html" ===== */
+/* ========================================= */
+
+	/* ----- Clase "envio" (define el formato del texto de confirmación de envío del mensaje) ----- */
+	.envio {
+		margin-top: 10vh;
+		text-decoration: none;
+	}
+
+
+/* ======================================= */
+/* ===== Estilos página "error.html" ===== */
+/* ======================================= */
+
+	/* ----- Clase "error" (define el formato de la imagen de la página "error.html") ----- */
+	.error {
+		max-height:100%;
+		max-width:100%;
+		position:absolute;
+		top:-50%; bottom:-50%;
+		left:-50%; right:-50%;
+		margin:auto;
+	}
+
+
+/* ============================================ */
+/* ===== Estilos página "disclaimer.html" ===== */
+/* ============================================ */
+
+	/* ----- Clase "disclaimer" (define el formato del area activa de la página "disclaimer.html") ----- */
+	.disclaimer {
+		width: 60%;
+		margin: auto;
+	}
+	
+	/* ----- Elemento de párrafo dentro de la clase "disclaimer" (define el formato del texto principal de la página "disclaimer.html") ----- */
+	.disclaimer p {
+		margin-bottom: 0.5rem;
+		text-align: justify;
+	}
+
+
+/* ========================================== */
+/* ===== Estilos página "licencia.html" ===== */
+/* ========================================== */
+
+	/* ----- Clase "licencia" (define el formato del area activa de la página "licencia.html") ----- */
+	.licencia {
+		width: 80%;
+		margin: auto;
+	}
+	
+	/* ----- Elemento de párrafo dentro de la clase "licencia" (define el formato del texto introductorio de la página "licencia.html") ----- */
+	.licencia p {
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	
+	/* ----- Clase "recursos" (define el formato de la tabla de la página "licencia.html") ----- */
+	.recursos {
+		width: 60vw;
+		border: 1px solid;
+		border-collapse: collapse;	
+	}
+	
+	/* ----- Elemento th dentro de la clase "recursos" (define el formato del encabezado de la tabla (en negrita)) ----- */
+	.recursos th {
+		font-weight: bold;
+	}
+	
+	/* ----- Elementos th y td dentro de la clase "recursos" (define el formato de las celdas de la tabla) ----- */
+	.recursos th, .recursos td {
+		width: 20%;
+		border: 1px solid;
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	/* ----- Elemento img dentro de la clase "recursos" (define el formato de cada imagen que irá en la primera columna de la tabla) ----- */
+	.recursos img {
+		max-width: 15vw;
+		max-height: 15vh;
+		padding: 2vh;
+	}
